@@ -1,7 +1,9 @@
+import MainLayout from "./layout/MainLayout/MainLayout";
+
 function App() {
   return (
     <div className="App">
-      테일윈드
+      <MainLayout />
     </div>
   );
 }

@@ -1,0 +1,6 @@
+.layout-left {
+  display: flex;
+  flex-direction: column;
+  margin-right: 40px;
+  width: 240px;
+}
