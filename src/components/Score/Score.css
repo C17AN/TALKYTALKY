@@ -1,0 +1,19 @@
+.excellent {
+  color: green;
+}
+
+.good {
+  color: green;
+}
+
+.normal {
+  color: green;
+}
+
+.inadequate {
+  color: red;
+}
+
+.bad {
+  color: red;
+}
