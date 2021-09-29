@@ -1,21 +1,32 @@
 import BaseCard from 'components/common/BaseCard/BaseCard'
 import Hero from 'components/Hero/Hero'
 import SelectDifficulty from 'components/SelectDifficulty/SelectDifficulty'
+import SelectStudyMode from 'components/SelectStudyMode/SelectStudyMode'
 import TestResult from 'components/TestResult/TestResult'
 import TestWrapper from 'components/TestWrapper/TestWrapper'
 import React from 'react'
 import { useRecoilState } from 'recoil'
-import { languageState } from 'store/store'
+import { difficultyState, languageState, studyModeState } from 'store/store'
 import styles from "./CenterLayout.module.css"
 
 const CenterLayout = () => {
-  const [language, _] = useRecoilState(languageState)
+  const [language] = useRecoilState(languageState)
+  const [difficulty] = useRecoilState(difficultyState)
+  const [studyMode] = useRecoilState(studyModeState)
+
   return language ? (
     <div className={styles['layout-center']}>
       <>
-        <SelectDifficulty />
-        <TestWrapper />
-        <TestResult />
+        {studyMode ?
+          <>
+            <SelectDifficulty />
+            <TestWrapper />
+            <TestResult />
+          </> :
+          <>
+            <SelectStudyMode />
+          </>
+        }
       </>
     </div>
   ) :

@@ -12,21 +12,17 @@ const Menu = () => {
 
   return (
     <BaseCard>
-      <ul>
+      <ul className="">
         <MenuItem
           title="한국어 (TOPIK)"
           onClick={() => setSelectedLanguage(language.KOREAN)}
           language={language.KOREAN}
         />
-        <MenuType type="연습하기" language={language.KOREAN}></MenuType>
-        <MenuType type="모의 테스트" language={language.KOREAN}></MenuType>
         <MenuItem
           title="영어 (OPIC)"
           onClick={() => setSelectedLanguage(language.ENGLISH)}
           language={language.ENGLISH}
         />
-        <MenuType type="연습하기" language={language.ENGLISH}></MenuType>
-        <MenuType type="모의 테스트" language={language.ENGLISH}></MenuType>
       </ul>
     </BaseCard>
   );

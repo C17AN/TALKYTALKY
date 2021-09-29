@@ -10,3 +10,8 @@ export const difficultyState = atom({
   key: "difficultyState",
   default: null,
 });
+
+export const studyModeState = atom({
+  key: "studyModeState",
+  default: null,
+});

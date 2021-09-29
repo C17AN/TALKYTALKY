@@ -1,6 +1,6 @@
-const language = {
+const LANGUAGE = {
   KOREAN: 'KOREAN',
   ENGLISH: 'ENGLISH',
 };
 
-export default language;
+export default LANGUAGE;
