@@ -2,21 +2,20 @@ import BaseCard from 'components/common/BaseCard/BaseCard'
 import BaseSubtitle from 'components/common/BaseSubtitle/BaseSubtitle'
 import ResultDescription from 'components/ResultDescription/ResultDescription'
 import React from 'react'
+import Score from 'components/Score/Score'
 
-const SpeechScore = () => {
+const TestResult = () => {
   return (
     <>
       <BaseSubtitle text="스피킹 채점 결과" />
       <BaseCard>
         <div className="flex items-center m-4">
+          <Score score={98.2}></Score>
           <ResultDescription />
-          <p className="text-4xl font-thin flex-1 mr-4">
-            98.2점
-          </p>
         </div>
       </BaseCard>
     </>
   )
 }
 
-export default SpeechScore
+export default TestResult
