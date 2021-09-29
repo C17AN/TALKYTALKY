@@ -1,5 +1,4 @@
 import { atom } from "recoil";
-import LANGUAGE from "constants/language";
 
 export const languageState = atom({
   key: "languageState",
@@ -15,3 +14,8 @@ export const studyModeState = atom({
   key: "studyModeState",
   default: null,
 });
+
+export const testListState = atom({
+  key: "testListState",
+  default: []
+})

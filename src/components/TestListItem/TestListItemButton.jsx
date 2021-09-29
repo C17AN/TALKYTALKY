@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const TestItemButton = ({ text, onClick }) => {
+const TestListItemButton = ({ text, onClick }) => {
   return (
-    <Link to="/id">
+    <Link to="/tests/191293">
       <button onClick={onClick} className="p-1 px-3 bg-indigo-50 rounded-md text-sm">
         {text}
       </button>
@@ -11,4 +11,4 @@ const TestItemButton = ({ text, onClick }) => {
   )
 }
 
-export default TestItemButton
+export default TestListItemButton
