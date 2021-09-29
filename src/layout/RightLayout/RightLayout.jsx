@@ -1,13 +1,13 @@
-import Recorder from "components/Recorder/Recorder";
+import TestWrapper from "components/TestWrapper/TestWrapper";
 import SelectDifficulty from "components/SelectDifficulty/SelectDifficulty";
 import React from "react";
 import styles from "./RightLayout.module.css";
+import ScoreBoard from "components/ScoreBoard/ScoreBoard";
 
 const RightLayout = () => {
   return (
     <div className={styles["layout-right"]}>
-      <SelectDifficulty />
-      <Recorder />
+      <ScoreBoard />
     </div>
   );
 };

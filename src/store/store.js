@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import LANGUAGE from "constants/language";
 
 export const languageState = atom({
   key: "languageState",

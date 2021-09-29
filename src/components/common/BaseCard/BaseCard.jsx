@@ -7,7 +7,7 @@ const BaseCard = ({ className: cn, children }) => {
       className={[
         cn,
         styles.card,
-        "border border-gray-300 shadow-md rounded-md",
+        "mb-4 border border-gray-300 shadow-md rounded-md",
       ].join(" ")}
     >
       {children}

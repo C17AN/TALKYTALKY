@@ -1,6 +1,6 @@
 const language = {
-  KOREAN: 0,
-  ENGLISH: 1,
+  KOREAN: 'KOREAN',
+  ENGLISH: 'ENGLISH',
 };
 
 export default language;

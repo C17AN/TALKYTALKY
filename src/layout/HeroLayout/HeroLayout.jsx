@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LanguageOptions = () => {
+const HeroLayout = () => {
   return (
     <div>
 
@@ -8,4 +8,4 @@ const LanguageOptions = () => {
   )
 }
 
-export default LanguageOptions
+export default HeroLayout
