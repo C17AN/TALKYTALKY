@@ -25,9 +25,6 @@ const CenterLayout = () => {
         <Route path="/" exact>
           <BaseCard className={styles['layout-center']}>
             <Hero />
-            <p className="mt-8 px-6 py-2 rounded-md bg-blue-500 text-white shadow-md cursor-pointer">
-              좌측 메뉴에서 응시할 언어를 선택해주세요.
-            </p>
           </BaseCard>
         </Route>
         {/* 타입 선택 페이지 */}

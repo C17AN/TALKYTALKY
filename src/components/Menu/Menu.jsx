@@ -30,26 +30,32 @@ const Menu = () => {
         />
         <MenuItem
           title="일본어 발음평가"
+          onClick={() => handleSelectLanguage(null)}
           isDisabled={true}
         />
         <MenuItem
           title="중국어 발음평가"
+          onClick={() => handleSelectLanguage(null)}
           isDisabled={true}
         />
         <MenuItem
           title="독일어 발음평가"
+          onClick={() => handleSelectLanguage(null)}
           isDisabled={true}
         />
         <MenuItem
           title="인도어 발음평가"
+          onClick={() => handleSelectLanguage(null)}
           isDisabled={true}
         />
         <MenuItem
           title="러시아어 발음평가"
+          onClick={() => handleSelectLanguage(null)}
           isDisabled={true}
         />
         <MenuItem
           title="베트남어 발음평가"
+          onClick={() => handleSelectLanguage(null)}
           isDisabled={true}
         />
       </ul>

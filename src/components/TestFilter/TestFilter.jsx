@@ -13,13 +13,14 @@ const TestFilter = () => {
 
   return (
     <>
-      <BaseSubtitle text={`${parsedStudyMode} / 난이도 선택`} />
+      <BaseSubtitle text={`[${parsedStudyMode}] - 조건 검색`} />
       <BaseCard className="mb-4">
         <div className="w-full p-4 flex justify-center">
-          <section className="flex flex-col items-center px-8 border-r border-gray-300">
+          <section className="flex flex-col items-center mx-auto">
             <SelectDifficulty />
           </section>
-          <section className="flex flex-col items-center mx-8">
+          <div className="border-r border-gray-300"></div>
+          <section className="flex flex-col items-center mx-auto">
             <SelectCategory />
           </section>
         </div>

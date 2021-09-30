@@ -8,14 +8,15 @@ const MenuItem = ({ title, language, onClick, isDisabled }) => {
   const [selectedLanguage, _] = useRecoilState(languageState)
   return (
     <li
-      className={`w-4/5 px-6 py-2 m-2 cursor-pointer flex justify-center ${isDisabled && "text-gray-400"} ${selectedLanguage === LANGUAGE[language] ? "bg-blue-300 text-white rounded-md" : null} transition-all`}
+      className={`w-4/5 px-6 py-2 m-2 cursor-pointer flex justify-center rounded-md
+      ${isDisabled && "text-gray-400"} ${selectedLanguage === LANGUAGE[language] ?
+          "bg-blue-300 text-white hover:bg-blue-300" :
+          null
+        }
+        transition-all hover:bg-blue-50`}
       onClick={onClick}
     >
-      {
-        isDisabled ?
-          <p>{title}</p> :
-          <Link to="/tests">{title}</Link>
-      }
+      <Link to="/tests">{title}</Link>
     </li>
   );
 };
