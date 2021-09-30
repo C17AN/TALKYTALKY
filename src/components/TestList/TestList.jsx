@@ -1,15 +1,17 @@
 import BaseCard from 'components/common/BaseCard/BaseCard'
 import BaseSubtitle from 'components/common/BaseSubtitle/BaseSubtitle'
-import TestItem from 'components/TestListItem/TestListItem'
+import TestListItem from 'components/TestListItem/TestListItem'
 import React, { useEffect, useState } from 'react'
+import { useRecoilState } from 'recoil'
+import { testListState } from 'store/store'
 
 const TestList = () => {
-  const [testList, setTestList] = useState([])
+  const [testList, setTestList] = useRecoilState(testListState)
 
   const fetchTestList = async () => {
-    const testList = await import("data/koreanTest.json").then(res => console.log(res))
-    console.log(testList)
-    setTestList(testList)
+    await import("data/koreanTest.json").then(testData => {
+      setTestList(testData.default)
+    })
   }
 
   useEffect(() => {
@@ -23,7 +25,7 @@ const TestList = () => {
         <ul className="block">
           {testList?.map(testData => {
             const { id, text, difficulty, language } = testData
-            return <TestItem id={id} text={text} difficulty={difficulty} />
+            return <TestListItem id={id} text={text} difficulty={difficulty} />
           })}
         </ul>
       </BaseCard>

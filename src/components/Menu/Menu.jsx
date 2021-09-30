@@ -19,12 +19,12 @@ const Menu = () => {
     <BaseCard>
       <ul className="">
         <MenuItem
-          title="한국어 (TOPIK)"
+          title="한국어 발음평가"
           onClick={() => handleSelectLanguage(language.KOREAN)}
           language={language.KOREAN}
         />
         <MenuItem
-          title="영어 (OPIC)"
+          title="영어 발음평가"
           onClick={() => handleSelectLanguage(language.ENGLISH)}
           language={language.ENGLISH}
         />
