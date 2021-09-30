@@ -2,14 +2,18 @@ import BaseCard from "components/common/BaseCard/BaseCard";
 import BaseSubtitle from "components/common/BaseSubtitle/BaseSubtitle";
 import React from "react";
 import { useRecoilState } from "recoil";
-import { difficultyState } from "store/store";
+import { difficultyState, studyModeState } from "store/store";
+import { parseModeName } from "utils/parseModeName";
 import DifficultyButton from "./DifficultyButton";
 
 const SelectDifficulty = () => {
   const [_, setDifficulty] = useRecoilState(difficultyState);
+  const [studyMode] = useRecoilState(studyModeState);
+  const parsedStudyMode = parseModeName(studyMode)
+
   return (
     <>
-      <BaseSubtitle text="난이도 선택" />
+      <BaseSubtitle text={`${parsedStudyMode} / 난이도 선택`} />
       <BaseCard className="mb-4">
         <div className="p-4">
           <h1 className="text-center mb-4 text-lg font-semibold text-gray-600">난이도를 선택하세요</h1>

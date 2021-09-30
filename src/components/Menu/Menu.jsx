@@ -16,8 +16,8 @@ const Menu = () => {
   }
 
   return (
-    <BaseCard>
-      <ul className="">
+    <BaseCard className="h-full justify-start">
+      <ul className="w-full flex-col flex items-center p-2">
         <MenuItem
           title="한국어 발음평가"
           onClick={() => handleSelectLanguage(language.KOREAN)}
@@ -27,6 +27,30 @@ const Menu = () => {
           title="영어 발음평가"
           onClick={() => handleSelectLanguage(language.ENGLISH)}
           language={language.ENGLISH}
+        />
+        <MenuItem
+          title="중국어 발음평가"
+          isDisabled={true}
+        />
+        <MenuItem
+          title="독일어 발음평가"
+          isDisabled={true}
+        />
+        <MenuItem
+          title="인도어 발음평가"
+          isDisabled={true}
+        />
+        <MenuItem
+          title="러시아어 발음평가"
+          isDisabled={true}
+        />
+        <MenuItem
+          title="베트남어 발음평가"
+          isDisabled={true}
+        />
+        <MenuItem
+          title="체코어 발음평가"
+          isDisabled={true}
         />
       </ul>
     </BaseCard>
