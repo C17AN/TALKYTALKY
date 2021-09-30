@@ -31,8 +31,8 @@ const TestList = () => {
   return (
     <>
       <BaseSubtitle text="예문 목록" />
-      <BaseCard className="block">
-        <ul className="block">
+      <BaseCard className="flex">
+        <ul className="block flex-1 w-full">
           {testList?.map(testData => {
             const { id, text, difficulty, language } = testData
             return <TestListItem id={id} text={text} difficulty={difficulty} />

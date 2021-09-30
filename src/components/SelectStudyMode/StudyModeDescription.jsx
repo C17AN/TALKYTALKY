@@ -1,4 +1,5 @@
 import BaseCard from 'components/common/BaseCard/BaseCard'
+import BaseSubtitle from 'components/common/BaseSubtitle/BaseSubtitle'
 import STUDYMODE from 'constants/studyMode'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
@@ -12,14 +13,17 @@ const StudyModeDescription = ({ tempStudyStatus }) => {
     } else if (tempStudyStatus === STUDYMODE.TEST) {
       setModeDescription("✏️ 시험 모드입니다. 원하는 카테고리를 선택하고, 시간 제한과 점수를 통해 결과를 평가합니다.")
     } else {
-      setModeDescription(null)
+      setModeDescription("학습 모드를 선택해 주세요.")
     }
   }, [tempStudyStatus])
 
-  return modeDescription && (
-    <BaseCard className="mt-4">
-      <p className="p-4">{modeDescription}</p>
-    </BaseCard>
+  return (
+    <>
+      <BaseSubtitle text="학습 모드 설명" className="mt-4" />
+      <BaseCard className="flex-1">
+        {modeDescription && <p className="p-4">{modeDescription}</p>}
+      </BaseCard>
+    </>
   )
 }
 

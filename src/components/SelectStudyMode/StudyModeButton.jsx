@@ -11,12 +11,12 @@ const StudyModeButton = ({ text, studyType, icon, onHover, onBlur }) => {
   return (
     <Link to={`/tests/${language}`}>
       <button
-        className={[styles['study-mode--button'], "relative hover:border-blue-500 hover:bg-blue-100 transition-all h-80 bg-blue-50"].join(" ")}
+        className={[styles['study-mode--button'], "flex flex-col justify-between hover:border-blue-500 hover:bg-blue-100 transition-all h-full bg-blue-50"].join(" ")}
         onClick={() => setStudyMode(studyType)}
         onMouseEnter={onHover}
         onMouseLeave={onBlur}>
-        <img src={icon} alt="학습 타입" height="240" />
-        <p className="absolute bottom-4 right-4 text-lg text-gray-600 font-semibold">{text}</p>
+        <img src={icon} alt="학습 타입" className="object-fit" />
+        <p className="mt-2 text-lg text-gray-600 font-semibold flex w-full justify-center">{text}</p>
       </button >
     </Link>
   )

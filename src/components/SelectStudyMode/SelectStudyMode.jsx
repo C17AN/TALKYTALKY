@@ -22,16 +22,17 @@ const SelectStudyMode = () => {
   return (
     <>
       <BaseSubtitle text="학습유형 선택" />
-      <BaseCard className="mb-4 block h-4/5">
+      <BaseCard className="mb-4 flex flex-col">
         <div className="m-4">
           <h1 className="text-center mb-4 text-lg font-semibold text-gray-600">학습할 타입을 선택하세요</h1>
           <section className="flex justify-center space-x-6">
             <StudyModeButton text="학습 모드" icon={StudyImage} studyType={STUDYMODE.PRACTICE} onHover={() => handleHoverTempStudyStatus(STUDYMODE.PRACTICE)} onBlur={handleBlurTempStudyStatus} />
             <StudyModeButton text="테스트 모드" icon={TestImage} studyType={STUDYMODE.TEST} onHover={() => handleHoverTempStudyStatus(STUDYMODE.TEST)} onBlur={handleBlurTempStudyStatus} />
           </section>
-          <StudyModeDescription tempStudyStatus={tempStudyStatus} />
         </div>
       </BaseCard>
+      <StudyModeDescription tempStudyStatus={tempStudyStatus} />
+
     </>
   )
 }
