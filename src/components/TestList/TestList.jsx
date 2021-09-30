@@ -32,7 +32,7 @@ const TestList = () => {
     <>
       <BaseSubtitle text="예문 목록" />
       <div className="flex-1 flex flex-col justify-between">
-        <BaseCard className="flex flex-1 overflow-y-scroll">
+        <BaseCard className="testList-container flex flex-1 overflow-y-scroll">
           <ul className="block flex-1 w-full">
             {testList?.map(testData => {
               const { id, text, difficulty, language } = testData

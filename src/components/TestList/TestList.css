@@ -1,3 +1,17 @@
+.testList-container::-webkit-scrollbar {
+  width: 10px;
+  background-color: #cee2fa;
+}
+
+.testList-container::-webkit-scrollbar-track {
+  border-radius: 100px;
+}
+
+.testList-container::-webkit-scrollbar-thumb {
+  background-color: #d4aa70;
+  border-radius: 100px;
+}
+
 .paginate-container {
   display: flex;
   justify-content: space-between;
