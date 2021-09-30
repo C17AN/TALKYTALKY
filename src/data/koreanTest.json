@@ -3,30 +3,35 @@
     "id": 1,
     "text": "아버지 가방에 들어가신다",
     "difficulty": "쉬움",
-    "language": "한국어"
+    "language": "한국어",
+    "category": "DAILY"
   },
   {
     "id": 2,
     "text": "안녕, 어디 가는 길이니?",
     "difficulty": "쉬움",
-    "language": "한국어"
+    "language": "한국어",
+    "category": "DAILY"
   },
   {
     "id": 3,
     "text": "나는 오늘 미국행 비행기를 타기로 했어",
     "difficulty": "쉬움",
-    "language": "한국어"
+    "language": "한국어",
+    "category": "TRAVEL"
   },
   {
     "id": 4,
     "text": "하늘과 별과 바람과 시",
     "difficulty": "쉬움",
-    "language": "한국어"
+    "language": "한국어",
+    "category": "ART"
   },
   {
     "id": 5,
     "text": "그는 그렇게 말했습니다.",
     "difficulty": "쉬움",
-    "language": "한국어"
+    "language": "한국어",
+    "category": "DAILY"
   }
 ]

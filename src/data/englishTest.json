@@ -3,30 +3,35 @@
     "id": 1,
     "text": "My father is going to bed",
     "difficulty": "EASY",
-    "language": "ENGLISH"
+    "language": "ENGLISH",
+    "category": "DAILY"
   },
   {
     "id": 2,
     "text": "Hi, Where are you going?",
     "difficulty": "EASY",
-    "language": "ENGLISH"
+    "language": "ENGLISH",
+    "category": "DAILY"
   },
   {
     "id": 3,
     "text": "I'm going to take plane to New York",
     "difficulty": "EASY",
-    "language": "ENGLISH"
+    "language": "ENGLISH",
+    "category": "TRAVEL"
   },
   {
     "id": 4,
     "text": "I'm looking for someone to tell",
     "difficulty": "EASY",
-    "language": "ENGLISH"
+    "language": "ENGLISH",
+    "category": "DAILY"
   },
   {
     "id": 5,
     "text": "A Brave new world",
     "difficulty": "EASY",
-    "language": "ENGLISH"
+    "language": "ENGLISH",
+    "category": "ART"
   }
 ]
