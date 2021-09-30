@@ -8,7 +8,7 @@ const DifficultyButton = ({ text, selectedDifficulty, onClick }) => {
   return (
     <button onClick={onClick}
       className={[selectedDifficulty === difficulty ?
-        'bg-blue-400 text-white' : 'bg-gray-50', 'py-2 px-4 rounded-md transition-colors'].join(' ')}>
+        'bg-blue-400 text-white' : 'bg-gray-50', 'py-2 px-4 rounded-md transition-colors hover:bg-blue-200 hover:text-white transition-colors'].join(' ')}>
       {text}
     </button>
   );

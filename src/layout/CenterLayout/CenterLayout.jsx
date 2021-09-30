@@ -29,13 +29,16 @@ const CenterLayout = () => {
             </p>
           </BaseCard>
         </Route>
+        {/* 타입 선택 페이지 */}
+        <Route path="/tests/" exact>
+          <SelectStudyMode />
+        </Route>
         {/* 문제 목록 페이지 */}
-        <Route path="/tests" exact>
+        <Route path="/tests/:language" exact>
           {studyMode ?
             <>
               <SelectDifficulty />
               <TestList />
-              {/* <TestResult /> */}
             </> :
             <>
               <SelectStudyMode />
@@ -43,7 +46,7 @@ const CenterLayout = () => {
           }
         </Route>
         {/* 문제 상세 페이지 */}
-        <Route path="/tests/:id">
+        <Route path="/tests/:language/:id">
           <>
             <TestDetail />
             <TestResult />

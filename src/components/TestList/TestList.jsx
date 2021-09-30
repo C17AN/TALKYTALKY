@@ -1,17 +1,27 @@
 import BaseCard from 'components/common/BaseCard/BaseCard'
 import BaseSubtitle from 'components/common/BaseSubtitle/BaseSubtitle'
 import TestListItem from 'components/TestListItem/TestListItem'
+import ReactPaginate from "react-paginate"
 import React, { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { testListState } from 'store/store'
+import { languageState, testListState } from 'store/store'
+import "./TestList.css"
+import LANGUAGE from 'constants/language'
 
 const TestList = () => {
   const [testList, setTestList] = useRecoilState(testListState)
+  const [selectedLanguage] = useRecoilState(languageState)
 
   const fetchTestList = async () => {
-    await import("data/koreanTest.json").then(testData => {
-      setTestList(testData.default)
-    })
+    if (selectedLanguage === LANGUAGE.KOREAN) {
+      await import("data/koreanTest.json").then(testData => {
+        setTestList(testData.default)
+      })
+    } else if (selectedLanguage === LANGUAGE.ENGLISH) {
+      await import("data/englishTest.json").then(testData => {
+        setTestList(testData.default)
+      })
+    }
   }
 
   useEffect(() => {
@@ -29,6 +39,12 @@ const TestList = () => {
           })}
         </ul>
       </BaseCard>
+      <ReactPaginate
+        containerClassName="paginate-container"
+        pageClassName="paginate-page"
+        activeClassName="paginate-active"
+        previousClassName="paginate-prev"
+        nextClassName="paginate-next" />
     </>
   )
 }

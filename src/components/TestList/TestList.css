@@ -1,0 +1,20 @@
+.paginate-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.paginate-page {
+  background-color: #bbd5eb;
+  padding: 0 8px;
+  border-radius: 8px;
+}
+
+.paginate-active {
+}
+
+.paginate-prev {
+}
+
+.paginate-next {
+}

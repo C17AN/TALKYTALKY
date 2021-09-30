@@ -1,32 +1,32 @@
 [
   {
     "id": 1,
-    "text": "아버지 가방에 들어가신다",
+    "text": "My father is going to bed",
     "difficulty": "EASY",
-    "language": "KOREAN"
+    "language": "ENGLISH"
   },
   {
     "id": 2,
-    "text": "안녕, 어디 가는 길이니?",
+    "text": "Hi, Where are you going?",
     "difficulty": "EASY",
-    "language": "KOREAN"
+    "language": "ENGLISH"
   },
   {
     "id": 3,
-    "text": "나는 오늘 미국행 비행기를 타기로 했어",
+    "text": "I'm going to take plane to New York",
     "difficulty": "EASY",
-    "language": "KOREAN"
+    "language": "ENGLISH"
   },
   {
     "id": 4,
-    "text": "하늘과 별과 바람과 시",
+    "text": "I'm looking for someone to tell",
     "difficulty": "EASY",
-    "language": "KOREAN"
+    "language": "ENGLISH"
   },
   {
     "id": 5,
-    "text": "그는 그렇게 말했습니다.",
+    "text": "A Brave new world",
     "difficulty": "EASY",
-    "language": "KOREAN"
+    "language": "ENGLISH"
   }
 ]
