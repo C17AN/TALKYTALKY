@@ -2,7 +2,7 @@ import BaseCard from 'components/common/BaseCard/BaseCard'
 import BaseSubtitle from 'components/common/BaseSubtitle/BaseSubtitle'
 import TestListItem from 'components/TestListItem/TestListItem'
 import ReactPaginate from "react-paginate"
-import React, { useEffect, useState } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { languageState, testListState } from 'store/store'
 import "./TestList.css"
@@ -24,7 +24,7 @@ const TestList = () => {
     }
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetchTestList()
   }, [])
 

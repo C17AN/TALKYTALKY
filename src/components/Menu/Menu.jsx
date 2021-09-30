@@ -29,6 +29,10 @@ const Menu = () => {
           language={language.ENGLISH}
         />
         <MenuItem
+          title="일본어 발음평가"
+          isDisabled={true}
+        />
+        <MenuItem
           title="중국어 발음평가"
           isDisabled={true}
         />
@@ -46,10 +50,6 @@ const Menu = () => {
         />
         <MenuItem
           title="베트남어 발음평가"
-          isDisabled={true}
-        />
-        <MenuItem
-          title="체코어 발음평가"
           isDisabled={true}
         />
       </ul>

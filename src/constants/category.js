@@ -1,7 +1,7 @@
 const CATEGORY = {
   TRAVEL: "TRAVEL",
-  HOBBY: "HOBBY",
-  LIFE: "LIFE"
+  ART: "ART",
+  DAILY: "DAILY"
 }
 
 export default CATEGORY

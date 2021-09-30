@@ -3,6 +3,7 @@ import Hero from 'components/Hero/Hero'
 import SelectDifficulty from 'components/SelectDifficulty/SelectDifficulty'
 import SelectStudyMode from 'components/SelectStudyMode/SelectStudyMode'
 import TestDetail from 'components/TestDetail/TestDetail'
+import TestFilter from 'components/TestFilter/TestFilter'
 import TestList from 'components/TestList/TestList'
 import TestResult from 'components/TestResult/TestResult'
 import TestWrapper from 'components/TestWrapper/TestWrapper'
@@ -24,7 +25,7 @@ const CenterLayout = () => {
         <Route path="/" exact>
           <BaseCard className={styles['layout-center']}>
             <Hero />
-            <p>
+            <p className="mt-8 px-6 py-2 rounded-md bg-blue-500 text-white shadow-md cursor-pointer">
               좌측 메뉴에서 응시할 언어를 선택해주세요.
             </p>
           </BaseCard>
@@ -36,7 +37,7 @@ const CenterLayout = () => {
         {/* 문제 목록 페이지 */}
         <Route path="/tests/:language" exact>
           <>
-            <SelectDifficulty />
+            <TestFilter />
             <TestList />
           </>
         </Route>

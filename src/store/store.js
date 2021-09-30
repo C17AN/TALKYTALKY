@@ -15,7 +15,13 @@ export const studyModeState = atom({
   default: null,
 });
 
+export const categoryState = atom({
+  key: "categoryState",
+  default: null
+})
+
 export const testListState = atom({
   key: "testListState",
   default: []
 })
+
