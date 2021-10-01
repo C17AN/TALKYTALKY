@@ -1,11 +1,18 @@
 import React from 'react'
+import ScenarioTag from './ScenarioTag'
 
-const Scenario = ({ text }) => {
+const Scenario = ({ text, title, id, difficulty, language }) => {
   return (
-    <div className="w-full px-4 py-2 mb-4 border-l-8 bg-gray-50 shadow-md rounded-md border-indigo-800">
-      <h2 className="text-gray-400 font-semibole text-lg mb-2">예문 [발음 들어보기]</h2>
-      <p>{text}</p>
-    </div>
+    <>
+      <section className="flex justify-start w-full items-center space-x-3 mb-4">
+        <ScenarioTag text={language} />
+        <ScenarioTag text={difficulty} />
+      </section>
+      <div className="w-full px-4 py-2 mb-4 border-l-8 bg-gray-50 shadow-md rounded-md border-indigo-800">
+        <h2 className="text-gray-400 font-semibole text-sm mb-2 w-full text-left">[예문]</h2>
+        <p>{text}</p>
+      </div>
+    </>
   )
 }
 

@@ -1,3 +1,8 @@
+.test-list-wrapper {
+  align-items: flex-start;
+  overflow-y: scroll;
+}
+
 .testList-container::-webkit-scrollbar {
   width: 10px;
   background-color: #cee2fa;

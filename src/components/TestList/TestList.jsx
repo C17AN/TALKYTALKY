@@ -7,6 +7,7 @@ import { useRecoilState } from 'recoil'
 import { languageState, testListState } from 'store/store'
 import "./TestList.css"
 import LANGUAGE from 'constants/language'
+import { v4 as uuidv4 } from "uuid"
 
 const TestList = () => {
   const [testList, setTestList] = useRecoilState(testListState)
@@ -31,22 +32,14 @@ const TestList = () => {
   return (
     <>
       <BaseSubtitle text="예문 목록" />
-      <div className="flex-1 flex flex-col justify-between">
-        <BaseCard className="testList-container flex flex-1 overflow-y-scroll">
-          <ul className="block flex-1 w-full">
-            {testList?.map(testData => {
-              const { id, text, difficulty, language } = testData
-              return <TestListItem id={id} text={text} difficulty={difficulty} />
-            })}
-          </ul>
-        </BaseCard>
-        <ReactPaginate
-          containerClassName="paginate-container"
-          pageClassName="paginate-page"
-          activeClassName="paginate-active"
-          previousClassName="paginate-prev"
-          nextClassName="paginate-next" />
-      </div>
+      <BaseCard className="test-list-wrapper block">
+        <ul className="w-full">
+          {testList?.map(testData => {
+            const { id, text, difficulty, language } = testData
+            return <TestListItem id={id} text={text} difficulty={difficulty} key={uuidv4()} />
+          })}
+        </ul>
+      </BaseCard>
     </>
   )
 }

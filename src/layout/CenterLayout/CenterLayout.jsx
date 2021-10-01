@@ -42,7 +42,6 @@ const CenterLayout = () => {
         <Route path="/tests/:language/:id">
           <>
             <TestDetail />
-            <TestResult />
           </>
         </Route>
       </>

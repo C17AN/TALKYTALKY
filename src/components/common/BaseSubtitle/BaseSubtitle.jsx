@@ -1,8 +1,8 @@
 import React from 'react'
 
-const BaseSubtitle = ({ text, className }) => {
+const BaseSubtitle = ({ text, className: cn }) => {
   return (
-    <h2 className={[`mb-4 font-semibold text-xl`, className].join(' ')}>
+    <h2 className={[`mb-4 font-semibold text-xl`, cn].join(" ")}>
       {text}
     </h2>
   )

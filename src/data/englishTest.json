@@ -33,5 +33,40 @@
     "difficulty": "EASY",
     "language": "ENGLISH",
     "category": "ART"
+  },
+  {
+    "id": 6,
+    "text": "The subject may seem like old news.",
+    "difficulty": "MEDIUM",
+    "language": "ENGLISH",
+    "category": "DAILY"
+  },
+  {
+    "id": 5,
+    "text": "A Brave new world",
+    "difficulty": "EASY",
+    "language": "ENGLISH",
+    "category": "ART"
+  },
+  {
+    "id": 5,
+    "text": "A Brave new world",
+    "difficulty": "EASY",
+    "language": "ENGLISH",
+    "category": "ART"
+  },
+  {
+    "id": 5,
+    "text": "A Brave new world",
+    "difficulty": "EASY",
+    "language": "ENGLISH",
+    "category": "ART"
+  },
+  {
+    "id": 5,
+    "text": "A Brave new world",
+    "difficulty": "EASY",
+    "language": "ENGLISH",
+    "category": "ART"
   }
 ]
