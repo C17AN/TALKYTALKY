@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "text": "My father is going to bed",
+    "text": "My father is going to bed.",
     "difficulty": "EASY",
     "language": "ENGLISH",
     "category": "DAILY"
@@ -15,21 +15,21 @@
   },
   {
     "id": 3,
-    "text": "I'm going to take plane to New York",
+    "text": "I'm going to take plane to New York.",
     "difficulty": "EASY",
     "language": "ENGLISH",
     "category": "TRAVEL"
   },
   {
     "id": 4,
-    "text": "I'm looking for someone to tell",
+    "text": "I'm looking for someone to tell.",
     "difficulty": "EASY",
     "language": "ENGLISH",
     "category": "DAILY"
   },
   {
     "id": 5,
-    "text": "A Brave new world",
+    "text": "A Brave new world.",
     "difficulty": "EASY",
     "language": "ENGLISH",
     "category": "ART"
@@ -42,31 +42,31 @@
     "category": "DAILY"
   },
   {
-    "id": 5,
-    "text": "A Brave new world",
-    "difficulty": "EASY",
+    "id": 7,
+    "text": "Our current retail travel packages are listed below.",
+    "difficulty": "MEDIUM",
+    "language": "ENGLISH",
+    "category": "TRAVEL"
+  },
+  {
+    "id": 8,
+    "text": "To avoid unforeseen circumstances we recommend travel insurance.",
+    "difficulty": "MEDIUM",
     "language": "ENGLISH",
     "category": "ART"
   },
   {
-    "id": 5,
-    "text": "A Brave new world",
-    "difficulty": "EASY",
+    "id": 9,
+    "text": "That is absolutely right – art never dies .",
+    "difficulty": "MEDIUM",
     "language": "ENGLISH",
     "category": "ART"
   },
   {
-    "id": 5,
-    "text": "A Brave new world",
-    "difficulty": "EASY",
+    "id": 10,
+    "text": "This walking tour lasts approximately 45 minutes.",
+    "difficulty": "HARD",
     "language": "ENGLISH",
-    "category": "ART"
-  },
-  {
-    "id": 5,
-    "text": "A Brave new world",
-    "difficulty": "EASY",
-    "language": "ENGLISH",
-    "category": "ART"
+    "category": "TRAVEL"
   }
 ]

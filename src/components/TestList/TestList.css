@@ -3,17 +3,17 @@
   overflow-y: scroll;
 }
 
-.testList-container::-webkit-scrollbar {
+.test-list-wrapper::-webkit-scrollbar {
   width: 10px;
-  background-color: #cee2fa;
+  background-color: #ffffff;
 }
 
-.testList-container::-webkit-scrollbar-track {
+.test-list-wrapper::-webkit-scrollbar-track {
   border-radius: 100px;
 }
 
-.testList-container::-webkit-scrollbar-thumb {
-  background-color: #d4aa70;
+.test-list-wrapper::-webkit-scrollbar-thumb {
+  background-color: #cbd5f1;
   border-radius: 100px;
 }
 
