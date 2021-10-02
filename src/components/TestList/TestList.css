@@ -4,8 +4,8 @@
 }
 
 .test-list-wrapper::-webkit-scrollbar {
-  width: 10px;
-  background-color: #ffffff;
+  width: 2px;
+  background-color: #978080;
 }
 
 .test-list-wrapper::-webkit-scrollbar-track {

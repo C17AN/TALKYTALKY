@@ -1,9 +1,9 @@
-import BaseSubtitle from 'components/common/BaseSubtitle/BaseSubtitle'
-import React, { useEffect, useRef } from 'react'
-import { InformationCircleIcon } from '@heroicons/react/solid'
-import InfoIcon from "assets/images/info-icon.svg"
+import React, { useEffect, useRef, useState } from 'react'
+import { InformationCircleIcon, PlayIcon, StopIcon } from '@heroicons/react/solid'
+import "./VoiceRecorder.css"
 
 const VoiceRecorder = () => {
+  const [isPlaying, setIsPlaying] = useState(false)
   const playerRef = useRef(null)
   const stopButtonRef = useRef(null)
   const startButtonRef = useRef(null)
@@ -49,11 +49,17 @@ const VoiceRecorder = () => {
           <p className="text-sm">본 기능은 ETRI 발음평가 기술을 활용합니다.</p>
         </div>
       </section>
-      <div className="flex justify-center">
-        <audio className="player" controls ref={playerRef} autobuffer="autobuffer">
-          <source src={`data:audio/mp3;base64, hello`} />
-        </audio>
-      </div>
+      <section
+        className="flex items-center text-sm text-gray-400 px-4 py-1 hover:text-blue-200 rounded-md border border-gray-200 cursor-pointer"
+        onClick={() => onplay(playerRef)} >
+        {isPlaying ?
+          <StopIcon className="h-8 w-8" /> :
+          <PlayIcon className="h-8 w-8 transition-colors" />}
+        <p className="font-semibold ml-2">녹음 시작</p>
+      </section>
+      <audio className="player" controls ref={playerRef} autobuffer="autobuffer">
+        <source src={`data:audio/mp3;base64, hello`} />
+      </audio>
       {/* <div className="flex justify-end space-x-4 p-4">
         <button ref={stopButtonRef}>정지</button>
         <a ref={downloadLinkRef} href="">다운로드</a>

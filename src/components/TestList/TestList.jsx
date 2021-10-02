@@ -35,8 +35,15 @@ const TestList = () => {
       <BaseCard className="test-list-wrapper block">
         <ul className="w-full">
           {testList?.map(testData => {
-            const { id, text, difficulty, language } = testData
-            return <TestListItem id={id} text={text} difficulty={difficulty} key={uuidv4()} />
+            const { id, text, difficulty, language, category } = testData
+            return (
+              <TestListItem
+                id={id}
+                text={text}
+                difficulty={difficulty}
+                category={category}
+                key={uuidv4()} />
+            )
           })}
         </ul>
       </BaseCard>

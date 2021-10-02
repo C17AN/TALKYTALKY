@@ -1,4 +1,22 @@
-.voice-player {
+.player {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #212527;
+}
+
+.player {
+  margin-bottom: 15px;
+  background-color: transparent;
+  border: none;
+}
+
+.player:focus {
+  outline: none;
+}
+.player:hover {
+  cursor: pointer;
 }
 
 audio::-webkit-media-controls-panel {
