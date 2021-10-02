@@ -14,12 +14,13 @@ import { languageState } from 'store/store'
 
 
 const TestDetail = () => {
-  let { id } = useParams()
+  let { language, id } = useParams()
   const [testDetailData, setTestDetailData] = useState({})
-  const [selectedLanguage] = useRecoilState(languageState)
+  const [selectedLanguage, setSelectedLanguage] = useRecoilState(languageState)
   const [TTSaudio, setTTSAudio] = useState(null)
   const [TTSConfig, setTTSConfig] = useState(audioConfig)
-  const { language, difficulty } = testDetailData
+  const { difficulty } = testDetailData
+
 
   const fetchTestDetail = async (_id) => {
     if (selectedLanguage === LANGUAGE.KOREAN) {
@@ -45,15 +46,19 @@ const TestDetail = () => {
   }
 
   useLayoutEffect(() => {
+    setSelectedLanguage(language)
+  }, [])
+
+  useEffect(() => {
     fetchTestDetail(id)
-  }, [id])
+  }, [selectedLanguage])
 
 
   return (
     <>
       <BaseSubtitle text={`${id}번 : ${testDetailData?.text}`} />
       <BaseCard className="recorder-wrapper p-4 h-full flex flex-col justify-start">
-        <Scenario text={testDetailData.text} difficulty={difficulty} language={language} id={id} />
+        <Scenario text={testDetailData?.text} difficulty={difficulty} language={language} id={id} />
         <div className="flex flex-col justify-evenly w-full">
           {TTSaudio && <VoicePlayer audioFile={TTSaudio} />}
           <VoiceRecorder />

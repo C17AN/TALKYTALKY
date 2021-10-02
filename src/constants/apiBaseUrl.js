@@ -1,3 +1,4 @@
-export const apiBaseUrlEn = `http://aiopen.etri.re.kr:8000/WiseASR/Pronunciation`
-export const apiBaseUrlKo = `http://aiopen.etri.re.kr:8000/WiseASR/PronunciationKor`
+export const SpeechBaseUrlEn = `http://aiopen.etri.re.kr:8000/WiseASR/Pronunciation`
+export const SpeechBaseUrlKo = `http://aiopen.etri.re.kr:8000/WiseASR/PronunciationKor`
 export const googleTTSBaseUrl = "https://texttospeech.googleapis.com/v1/text:synthesize?key=AIzaSyC3LmDfRnDgk0coHBQ09o4MUgI47mOxDNk"
+export const ETRIAPIKey = `64002fc0-680f-498e-b3ba-86ef3e487e3a`
