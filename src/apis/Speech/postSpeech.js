@@ -1,14 +1,15 @@
 import axios from "axios"
 import { SpeechBaseUrlEn, SpeechBaseUrlKo } from "constants/apiBaseUrl";
+import LANGUAGE from "constants/language";
 import { setSpeechRequestBody } from "./SpeechBodySetter";
 
-export const requestSpeechAPI = async (config) => {
+export const requestSpeechAPI = async ({ language, audio, script }) => {
   let SpeechEvalRequest = {}
-  if (config.language === "korean") {
-    SpeechEvalRequest = await axios.post(SpeechBaseUrlKo, setSpeechRequestBody(config))
+  if (language === LANGUAGE.KOREAN) {
+    SpeechEvalRequest = await axios.post(SpeechBaseUrlKo, setSpeechRequestBody({ language: "korean", audio, script }))
   }
-  if (config.language === "english") {
-    SpeechEvalRequest = await axios.post(SpeechBaseUrlEn, setSpeechRequestBody(config))
+  if (language === LANGUAGE.ENGLISH) {
+    SpeechEvalRequest = await axios.post(SpeechBaseUrlEn, setSpeechRequestBody({ language: 'english', audio, script }))
   }
   return SpeechEvalRequest
 }

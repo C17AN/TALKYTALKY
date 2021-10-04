@@ -25,3 +25,12 @@ export const testListState = atom({
   default: []
 })
 
+export const testResultState = atom({
+  key: "testResultState",
+  default: {
+    score: 0,
+    accScore: 0,
+    scoreList: []
+  }
+})
+

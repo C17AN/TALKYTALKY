@@ -2,6 +2,8 @@ import { requestTTSApi } from 'apis/TTS/postTTS'
 import BaseCard from 'components/common/BaseCard/BaseCard'
 import BaseSubtitle from 'components/common/BaseSubtitle/BaseSubtitle'
 import Scenario from 'components/Scenario/Scenario'
+import ScenarioTag from 'components/Scenario/ScenarioTag'
+import TestResult from 'components/TestResult/TestResult'
 import VoicePlayer from 'components/VoicePlayer/VoicePlayer'
 import VoiceRecorder from 'components/VoiceRecorder/VoiceRecorder'
 import { audioConfig } from 'constants/audioConfig'
@@ -15,25 +17,28 @@ import { languageState } from 'store/store'
 
 const TestDetail = () => {
   let { language, id } = useParams()
-  const [testDetailData, setTestDetailData] = useState({})
+  const [testDetailData, setTestDetailData] = useState(null)
+  const [testScript, setTestScript] = useState(null)
+  const [testDifficulty, setTestDifficulty] = useState(null)
   const [selectedLanguage, setSelectedLanguage] = useRecoilState(languageState)
   const [TTSaudio, setTTSAudio] = useState(null)
   const [TTSConfig, setTTSConfig] = useState(audioConfig)
-  const { difficulty } = testDetailData
 
 
   const fetchTestDetail = async (_id) => {
     if (selectedLanguage === LANGUAGE.KOREAN) {
       await import("data/koreanTest.json").then(({ default: testData }) => {
         const testDetail = testData.filter(({ id }) => id === +_id)[0]
-        setTestDetailData(testDetail)
+        setTestScript(testDetail.text)
+        setTestDifficulty(testDetail.difficulty)
         fetchTTSAudioData(testDetail.text)
       })
     }
     else if (selectedLanguage === LANGUAGE.ENGLISH) {
       await import("data/englishTest.json").then(({ default: testData }) => {
         const testDetail = testData.filter(({ id }) => id === +_id)[0]
-        setTestDetailData(testDetail)
+        setTestScript(testDetail.text)
+        setTestDifficulty(testDetail.difficulty)
         fetchTTSAudioData(testDetail.text)
       })
     }
@@ -46,6 +51,7 @@ const TestDetail = () => {
   }
 
   useLayoutEffect(() => {
+    // 새로고침 했을 시, 스토어가 날아가는걸 방지하기 위한 코드
     setSelectedLanguage(language)
   }, [])
 
@@ -56,13 +62,17 @@ const TestDetail = () => {
 
   return (
     <>
-      <BaseSubtitle text={`${id}번 : ${testDetailData?.text}`} />
+      <div className="flex justify-between mb-4 items-center">
+        <BaseSubtitle text={`${id}번 : ${testScript}`} />
+        <ScenarioTag text={language} />
+      </div>
       <BaseCard className="recorder-wrapper p-4 h-full flex flex-col justify-start">
-        <Scenario text={testDetailData?.text} difficulty={difficulty} language={language} id={id} />
+        <Scenario text={testScript} difficulty={testDifficulty} language={language} id={id} />
         <div className="flex flex-col justify-evenly w-full">
           {TTSaudio && <VoicePlayer audioFile={TTSaudio} />}
-          <VoiceRecorder />
+          <VoiceRecorder text={testScript} language={language} />
         </div>
+        <TestResult />
       </BaseCard >
     </>
   )

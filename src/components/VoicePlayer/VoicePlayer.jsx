@@ -1,9 +1,8 @@
-import BaseSubtitle from 'components/common/BaseSubtitle/BaseSubtitle'
 import React, { useRef } from 'react'
 import { InformationCircleIcon } from "@heroicons/react/solid"
 import { PlayIcon, StopIcon } from '@heroicons/react/solid'
-import "./VoicePlayer.css"
 import { useState } from 'react'
+import "./VoicePlayer.css"
 
 const VoicePlayer = ({ audioFile, id }) => {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -13,8 +12,6 @@ const VoicePlayer = ({ audioFile, id }) => {
     setIsPlaying(true)
     playerRef.current.play()
   }
-
-
 
   return (
     <div className="voice-player flex items-center justify-between rounded-md py-4 px-6 w-full mb-4 shadow-md border-l-8 border-blue-600">

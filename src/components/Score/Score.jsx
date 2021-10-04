@@ -14,7 +14,7 @@ const Score = ({ score }) => {
 
   return (
     <div className="flex flex-col justify-center">
-      <div className={`font-thin text-4xl mx-4 my-1 ${scoreClassName}`}>
+      <div className={`font-thin text-3xl mx-4 my-1 ${scoreClassName}`}>
         {score}
       </div>
       <p className="text-center">{scoreText}</p>
