@@ -23,6 +23,7 @@ const TestDetail = () => {
   const [selectedLanguage, setSelectedLanguage] = useRecoilState(languageState)
   const [TTSaudio, setTTSAudio] = useState(null)
   const [TTSConfig, setTTSConfig] = useState(audioConfig)
+  const [isWaiting, setIsWaiting] = useState(true)
 
 
   const fetchTestDetail = async (_id) => {
@@ -66,13 +67,19 @@ const TestDetail = () => {
         <BaseSubtitle text={`${id}번 : ${testScript}`} />
         <ScenarioTag text={language} />
       </div>
-      <BaseCard className="recorder-wrapper p-4 h-full flex flex-col justify-start">
+      <BaseCard className="test-detail-container p-4 h-full flex flex-col justify-start">
         <Scenario text={testScript} difficulty={testDifficulty} language={language} id={id} />
         <div className="flex flex-col justify-evenly w-full">
           {TTSaudio && <VoicePlayer audioFile={TTSaudio} />}
-          <VoiceRecorder text={testScript} language={language} />
+          <VoiceRecorder
+            text={testScript}
+            language={language}
+            setIsWaiting={setIsWaiting}
+          />
         </div>
-        <TestResult />
+        <TestResult
+          isWaiting={isWaiting}
+        />
       </BaseCard >
     </>
   )

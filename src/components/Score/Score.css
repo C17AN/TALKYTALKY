@@ -1,5 +1,5 @@
 .excellent {
-  color: green;
+  color: cornflowerblue;
 }
 
 .good {
@@ -7,13 +7,13 @@
 }
 
 .normal {
-  color: green;
-}
-
-.inadequate {
-  color: red;
+  color: greenyellow;
 }
 
 .bad {
+  color: orange;
+}
+
+.poor {
   color: red;
 }

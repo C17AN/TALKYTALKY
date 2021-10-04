@@ -7,14 +7,14 @@ const Score = ({ score }) => {
   const [scoreClassName, setScoreClassName] = useState(null)
 
   useEffect(() => {
-    const { text, className } = setScoreTextHelper(score)
+    const { text, resultCode } = setScoreTextHelper(score)
     setScoreText(text)
-    setScoreClassName(className)
+    setScoreClassName(resultCode)
   }, [])
 
   return (
     <div className="flex flex-col justify-center">
-      <div className={`font-thin text-3xl mx-4 my-1 ${scoreClassName}`}>
+      <div className={`font-light text-3xl mx-4 my-1 ${scoreClassName}`}>
         {score}
       </div>
       <p className="text-center">{scoreText}</p>

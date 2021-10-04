@@ -9,7 +9,7 @@ import { testResultState } from 'store/store'
 // 이 코드는 블로그에 정리하기!!
 // 아주 유용할듯!
 
-const VoiceRecorder = ({ text: script, language }) => {
+const VoiceRecorder = ({ text: script, language, setIsWaiting }) => {
   const [isRecording, setIsRecording] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [recordedAudio, setRecordedAudio] = useState(null)
@@ -78,8 +78,8 @@ const VoiceRecorder = ({ text: script, language }) => {
           playerRef.current.src = window.URL.createObjectURL(new Blob([wavBuffer], { type: 'audio/webm;' }));
           console.log(recordedBufferTobase64)
           const { data: { return_object: { score } } } = await requestSpeechAPI({ audio: recordedBufferTobase64, script, language: language })
-          console.log(score)
           setTestResult({ ...testResult, score: Number(score * 25).toFixed(2) })
+          setIsWaiting(false)
         })
       }
     });

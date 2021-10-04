@@ -30,7 +30,8 @@ export const testResultState = atom({
   default: {
     score: 0,
     accScore: 0,
-    scoreList: []
+    scoreList: [],
+    resultCode: null
   }
 })
 
