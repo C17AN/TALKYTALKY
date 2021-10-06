@@ -1,4 +1,5 @@
 import { requestTTSApi } from 'apis/TTS/postTTS'
+import BaseButton from 'components/common/BaseButton/BaseButton'
 import BaseCard from 'components/common/BaseCard/BaseCard'
 import BaseSubtitle from 'components/common/BaseSubtitle/BaseSubtitle'
 import Scenario from 'components/Scenario/Scenario'
@@ -6,14 +7,12 @@ import ScenarioTag from 'components/Scenario/ScenarioTag'
 import TestResult from 'components/TestResult/TestResult'
 import VoicePlayer from 'components/VoicePlayer/VoicePlayer'
 import VoiceRecorder from 'components/VoiceRecorder/VoiceRecorder'
-import { audioConfig } from 'constants/audioConfig'
+import setAudioConfig from 'utils/setAudioConfig'
 import LANGUAGE from 'constants/language'
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { useRecoilState } from 'recoil'
 import { languageState } from 'store/store'
-
-
 
 const TestDetail = () => {
   let { language, id } = useParams()
@@ -22,9 +21,8 @@ const TestDetail = () => {
   const [testDifficulty, setTestDifficulty] = useState(null)
   const [selectedLanguage, setSelectedLanguage] = useRecoilState(languageState)
   const [TTSaudio, setTTSAudio] = useState(null)
-  const [TTSConfig, setTTSConfig] = useState(audioConfig)
+  const [TTSConfig, setTTSConfig] = useState(setAudioConfig(language))
   const [isWaiting, setIsWaiting] = useState(true)
-
 
   const fetchTestDetail = async (_id) => {
     if (selectedLanguage === LANGUAGE.KOREAN) {
@@ -80,6 +78,10 @@ const TestDetail = () => {
         <TestResult
           isWaiting={isWaiting}
         />
+        <section className="flex justify-between w-full">
+          <BaseButton text="이전 문제" />
+          <BaseButton text="다음 문제" />
+        </section>
       </BaseCard >
     </>
   )

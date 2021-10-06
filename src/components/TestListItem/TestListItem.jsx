@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 import TestListItemButton from './TestListItemButton'
-import "./TestListItem.css"
+import "./TestListItem.scss"
 
 const TestListItem = ({ id, text, category, difficulty }) => {
   return (
@@ -19,8 +19,8 @@ const TestListItem = ({ id, text, category, difficulty }) => {
         <p className="pl-1 test-list-text">{text}</p>
       </div>
       <section className="flex space-x-4">
-        <p className="bg-blue-100 rounded-md p-1 px-2 text-sm">{category}</p>
-        <p className="bg-blue-100 rounded-md p-1 px-2 text-sm">{difficulty}</p>
+        <p className="testlist-item-category bg-blue-100 rounded-md p-1 px-2 text-sm">{category}</p>
+        <p className="testlist-item-difficulty bg-blue-100 rounded-md p-1 px-2 text-sm">{difficulty}</p>
         <TestListItemButton id={id} text="풀어보기" />
       </section>
     </motion.li >
