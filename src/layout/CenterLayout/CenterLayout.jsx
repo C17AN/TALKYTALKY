@@ -31,14 +31,14 @@ const CenterLayout = () => {
           <SelectStudyMode />
         </Route>
         {/* 문제 목록 페이지 */}
-        <Route path="/tests/:language" exact>
+        <Route path="/:studyMode/:language" exact>
           <>
             <TestFilter />
             <TestList />
           </>
         </Route>
         {/* 문제 상세 페이지 */}
-        <Route path="/tests/:language/:id">
+        <Route path="/:studyMode/:language/:id">
           <>
             <TestDetail />
           </>

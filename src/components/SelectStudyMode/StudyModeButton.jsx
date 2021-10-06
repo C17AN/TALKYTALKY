@@ -10,7 +10,7 @@ const StudyModeButton = ({ text, studyType, icon, onHover, onBlur }) => {
   const [language] = useRecoilState(languageState)
 
   return (
-    <Link to={`/tests/${language}`}>
+    <Link to={`/${studyType}/${language}`}>
       <motion.button
         whileHover={{
           scale: 1.02

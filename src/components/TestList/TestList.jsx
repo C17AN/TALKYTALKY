@@ -12,9 +12,9 @@ import CATEGORY from 'constants/category'
 
 const TestList = () => {
   const [testList, setTestList] = useRecoilState(testListState)
-  const [difficulty, ] = useRecoilState(difficultyState)
-  const [category, ] = useRecoilState(categoryState)
-  const {language} = useParams()
+  const [difficulty,] = useRecoilState(difficultyState)
+  const [category,] = useRecoilState(categoryState)
+  const { language } = useParams()
   const [selectedLanguage, setSelectedLanguage] = useRecoilState(languageState)
 
   const fetchTestList = async () => {
@@ -22,7 +22,7 @@ const TestList = () => {
     if (selectedLanguage === LANGUAGE.KOREAN || language === LANGUAGE.KOREAN) {
       await import("data/koreanTest.json").then(testData => {
         let testList = testData.default
-        if(category || difficulty) {
+        if (category || difficulty) {
           testList = testList.filter((test) => test?.category === category && test?.difficulty === difficulty)
         }
         setTestList(testList)
@@ -30,7 +30,7 @@ const TestList = () => {
     } else if (selectedLanguage === LANGUAGE.ENGLISH || language === LANGUAGE.ENGLISH) {
       await import("data/englishTest.json").then(testData => {
         let testList = testData.default
-        if(category || difficulty) {
+        if (category || difficulty) {
           testList = testList.filter((test) => test?.category === category && test?.difficulty === difficulty)
         }
         setTestList(testList)
@@ -40,10 +40,7 @@ const TestList = () => {
 
   useLayoutEffect(() => {
     fetchTestList()
-    console.log(category, difficulty)
-    console.log(testList)
   }, [category, difficulty])
-
 
   return (
     <>

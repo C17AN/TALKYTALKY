@@ -6,11 +6,14 @@ import React from "react";
 import { useRecoilState } from "recoil";
 import { difficultyState, studyModeState } from "store/store";
 import { parseModeName } from "utils/parseModeName";
+import { useParams } from "react-router"
 
 const TestFilter = () => {
-  const [studyMode] = useRecoilState(studyModeState);
-  const parsedStudyMode = parseModeName(studyMode)
-  
+  const [selectedStudyMode] = useRecoilState(studyModeState);
+  const { studyMode } = useParams()
+
+  const parsedStudyMode = parseModeName(selectedStudyMode || studyMode)
+
 
   return (
     <>
