@@ -37,28 +37,28 @@
   {
     "id": 6,
     "text": "The subject may seem like old news.",
-    "difficulty": "MEDIUM",
+    "difficulty": "NORMAL",
     "language": "ENGLISH",
     "category": "DAILY"
   },
   {
     "id": 7,
     "text": "Our current retail travel packages are listed below.",
-    "difficulty": "MEDIUM",
+    "difficulty": "NORMAL",
     "language": "ENGLISH",
     "category": "TRAVEL"
   },
   {
     "id": 8,
     "text": "To avoid unforeseen circumstances we recommend travel insurance.",
-    "difficulty": "MEDIUM",
+    "difficulty": "NORMAL",
     "language": "ENGLISH",
     "category": "ART"
   },
   {
     "id": 9,
     "text": "That is absolutely right – art never dies .",
-    "difficulty": "MEDIUM",
+    "difficulty": "NORMAL",
     "language": "ENGLISH",
     "category": "ART"
   },
