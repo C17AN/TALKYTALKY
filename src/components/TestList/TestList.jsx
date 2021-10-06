@@ -1,33 +1,49 @@
 import BaseCard from 'components/common/BaseCard/BaseCard'
 import BaseSubtitle from 'components/common/BaseSubtitle/BaseSubtitle'
 import TestListItem from 'components/TestListItem/TestListItem'
-import ReactPaginate from "react-paginate"
-import React, { useLayoutEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { languageState, testListState } from 'store/store'
+import { categoryState, difficultyState, languageState, testListState } from 'store/store'
 import "./TestList.css"
 import LANGUAGE from 'constants/language'
 import { v4 as uuidv4 } from "uuid"
+import { useParams } from 'react-router'
+import CATEGORY from 'constants/category'
 
 const TestList = () => {
   const [testList, setTestList] = useRecoilState(testListState)
-  const [selectedLanguage] = useRecoilState(languageState)
+  const [difficulty, ] = useRecoilState(difficultyState)
+  const [category, ] = useRecoilState(categoryState)
+  const {language} = useParams()
+  const [selectedLanguage, setSelectedLanguage] = useRecoilState(languageState)
 
   const fetchTestList = async () => {
-    if (selectedLanguage === LANGUAGE.KOREAN) {
+    setSelectedLanguage(language)
+    if (selectedLanguage === LANGUAGE.KOREAN || language === LANGUAGE.KOREAN) {
       await import("data/koreanTest.json").then(testData => {
-        setTestList(testData.default)
+        let testList = testData.default
+        if(category || difficulty) {
+          testList = testList.filter((test) => test?.category === category && test?.difficulty === difficulty)
+        }
+        setTestList(testList)
       })
-    } else if (selectedLanguage === LANGUAGE.ENGLISH) {
+    } else if (selectedLanguage === LANGUAGE.ENGLISH || language === LANGUAGE.ENGLISH) {
       await import("data/englishTest.json").then(testData => {
-        setTestList(testData.default)
+        let testList = testData.default
+        if(category || difficulty) {
+          testList = testList.filter((test) => test?.category === category && test?.difficulty === difficulty)
+        }
+        setTestList(testList)
       })
     }
   }
 
   useLayoutEffect(() => {
     fetchTestList()
-  }, [])
+    console.log(category, difficulty)
+    console.log(testList)
+  }, [category, difficulty])
+
 
   return (
     <>

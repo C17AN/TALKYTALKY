@@ -5,6 +5,7 @@ import toWav from "audiobuffer-to-wav"
 import { requestSpeechAPI } from 'apis/Speech/postSpeech'
 import { useRecoilState } from 'recoil'
 import { testResultState } from 'store/store'
+import { setScoreTextHelper } from 'utils/setScoreTextHelper'
 
 // 이 코드는 블로그에 정리하기!!
 // 아주 유용할듯!
@@ -76,9 +77,9 @@ const VoiceRecorder = ({ text: script, language, setIsWaiting }) => {
           const wavBuffer = toWav(resampledBuffer)
           const recordedBufferTobase64 = Buffer.from(wavBuffer).toString('base64')
           playerRef.current.src = window.URL.createObjectURL(new Blob([wavBuffer], { type: 'audio/webm;' }));
-          console.log(recordedBufferTobase64)
           const { data: { return_object: { score } } } = await requestSpeechAPI({ audio: recordedBufferTobase64, script, language: language })
-          setTestResult({ ...testResult, score: Number(score * 25).toFixed(2) })
+          const { resultCode } = setScoreTextHelper(Number(score * 20).toFixed(2)) 
+          setTestResult({ ...testResult, resultCode, score: Number(score * 20).toFixed(2) })
           setIsWaiting(false)
         })
       }

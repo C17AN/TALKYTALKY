@@ -4,7 +4,6 @@ import CATEGORY from "constants/category";
 import React from "react";
 import { useRecoilState } from "recoil";
 import { categoryState, studyModeState } from "store/store";
-import { parseModeName } from "utils/parseModeName";
 import SelectCategoryButton from "./SelectCategoryButton";
 
 const SelectCategory = () => {

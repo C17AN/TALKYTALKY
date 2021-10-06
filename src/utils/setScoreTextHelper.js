@@ -11,6 +11,6 @@ export const setScoreTextHelper = (score) => {
     case score <= 100:
       return { text: "매우 우수", resultCode: "excellent" }
     default:
-      return
+      return { text: "", resultCode: "" }
   }
 }

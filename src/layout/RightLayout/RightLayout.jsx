@@ -1,4 +1,3 @@
-import TestWrapper from "components/TestWrapper/TestWrapper";
 import SelectDifficulty from "components/SelectDifficulty/SelectDifficulty";
 import React from "react";
 import styles from "./RightLayout.module.css";
