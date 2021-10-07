@@ -23,6 +23,9 @@ const TestList = () => {
       await import("data/koreanTest.json").then(testData => {
         let testList = testData.default
         if (category || difficulty) {
+          testList = testList.filter((test) => test?.category === category || test?.difficulty === difficulty)
+        }
+        if (category && difficulty) {
           testList = testList.filter((test) => test?.category === category && test?.difficulty === difficulty)
         }
         setTestList(testList)
@@ -31,6 +34,9 @@ const TestList = () => {
       await import("data/englishTest.json").then(testData => {
         let testList = testData.default
         if (category || difficulty) {
+          testList = testList.filter((test) => test?.category === category || test?.difficulty === difficulty)
+        }
+        if (category && difficulty) {
           testList = testList.filter((test) => test?.category === category && test?.difficulty === difficulty)
         }
         setTestList(testList)

@@ -22,9 +22,7 @@ const CenterLayout = () => {
       <>
         {/* 메인 페이지 */}
         <Route path="/" exact>
-          <BaseCard className={styles['layout-center']}>
             <Hero />
-          </BaseCard>
         </Route>
         {/* 타입 선택 페이지 */}
         <Route path="/tests/" exact>

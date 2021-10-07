@@ -13,6 +13,9 @@ import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { useRecoilState } from 'recoil'
 import { languageState } from 'store/store'
+import { parseLanguageName } from 'utils/parseLanguageName'
+import { parseDifficultyName } from 'utils/parseDifficultyName'
+import { parseCategoryName } from 'utils/parseCategoryName'
 
 const TestDetail = () => {
   let { language, id } = useParams()
@@ -62,8 +65,7 @@ const TestDetail = () => {
   return (
     <>
       <div className="flex justify-between mb-4 items-center">
-        <BaseSubtitle text={`${id}번 : ${testScript}`} />
-        <ScenarioTag text={language} />
+        <ScenarioTag text={`${parseLanguageName(language)} / ${id}번 / ${parseDifficultyName(testDifficulty)}`} className = "mr-3"/>
       </div>
       <BaseCard className="test-detail-container p-4 h-full flex flex-col justify-start">
         <Scenario text={testScript} difficulty={testDifficulty} language={language} id={id} />

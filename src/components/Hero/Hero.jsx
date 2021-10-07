@@ -3,10 +3,11 @@ import waveBackground from 'assets/images/wavesOpacity.svg'
 import TalkImage from "assets/images/talk-image.svg"
 import "./Hero.css"
 import { motion } from 'framer-motion'
+import BaseCard from 'components/common/BaseCard/BaseCard'
 
 const Hero = () => {
   return (
-    <>
+    <BaseCard className = "h-full">
       <img src={TalkImage} className="mb-8 hero-image" width="300" alt="hero" />
       <section className="hero-title text-center">
         <h1 className="text-7xl font-montserrat font-semibold mb-3">
@@ -20,7 +21,7 @@ const Hero = () => {
           ← 좌측 메뉴에서 응시할 언어를 선택해주세요.
         </motion.p>
       </section>
-    </>
+    </BaseCard>
   )
 }
 
