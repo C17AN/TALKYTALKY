@@ -19,29 +19,19 @@ const TestList = () => {
 
   const fetchTestList = async () => {
     setSelectedLanguage(language)
-    if (selectedLanguage === LANGUAGE.KOREAN || language === LANGUAGE.KOREAN) {
-      await import("data/koreanTest.json").then(testData => {
-        let testList = testData.default
-        if (category || difficulty) {
-          testList = testList.filter((test) => test?.category === category || test?.difficulty === difficulty)
-        }
-        if (category && difficulty) {
-          testList = testList.filter((test) => test?.category === category && test?.difficulty === difficulty)
-        }
-        setTestList(testList)
-      })
-    } else if (selectedLanguage === LANGUAGE.ENGLISH || language === LANGUAGE.ENGLISH) {
-      await import("data/englishTest.json").then(testData => {
-        let testList = testData.default
-        if (category || difficulty) {
-          testList = testList.filter((test) => test?.category === category || test?.difficulty === difficulty)
-        }
-        if (category && difficulty) {
-          testList = testList.filter((test) => test?.category === category && test?.difficulty === difficulty)
-        }
-        setTestList(testList)
-      })
+    const testData = selectedLanguage === LANGUAGE.KOREAN || language === LANGUAGE.KOREAN ?
+      await import("data/koreanTest.json") :
+      await import("data/englishTest.json")
+
+    let testList = testData.default
+    localStorage.setItem('problemCount', testList.length)
+    if (category || difficulty) {
+      testList = testList.filter((test) => test?.category === category || test?.difficulty === difficulty)
     }
+    if (category && difficulty) {
+      testList = testList.filter((test) => test?.category === category && test?.difficulty === difficulty)
+    }
+    setTestList(testList)
   }
 
   useLayoutEffect(() => {

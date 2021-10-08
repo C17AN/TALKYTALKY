@@ -1,10 +1,17 @@
 import React from 'react'
+import { motion } from 'framer-motion'
+import { subtitleVariants } from 'styles/framerAnimation'
 
 const BaseSubtitle = ({ text, className: cn }) => {
   return (
-    <h2 className={[`mb-4 font-semibold text-xl`, cn].join(" ")}>
+    <motion.h2
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={subtitleVariants}
+      className={[`mb-4 font-semibold text-xl`, cn].join(" ")}>
       {text}
-    </h2>
+    </motion.h2>
   )
 }
 

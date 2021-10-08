@@ -28,22 +28,11 @@ const TestDetail = () => {
   const [isWaiting, setIsWaiting] = useState(true)
 
   const fetchTestDetail = async (_id) => {
-    if (selectedLanguage === LANGUAGE.KOREAN) {
-      await import("data/koreanTest.json").then(({ default: testData }) => {
-        const testDetail = testData.filter(({ id }) => id === +_id)[0]
-        setTestScript(testDetail.text)
-        setTestDifficulty(testDetail.difficulty)
-        fetchTTSAudioData(testDetail.text)
-      })
-    }
-    else if (selectedLanguage === LANGUAGE.ENGLISH) {
-      await import("data/englishTest.json").then(({ default: testData }) => {
-        const testDetail = testData.filter(({ id }) => id === +_id)[0]
-        setTestScript(testDetail.text)
-        setTestDifficulty(testDetail.difficulty)
-        fetchTTSAudioData(testDetail.text)
-      })
-    }
+    const { default: testData } = selectedLanguage === LANGUAGE.KOREAN ? await import("data/koreanTest.json") : await import("data/englishTest.json")
+    const testDetail = testData.filter(({ id }) => id === +_id)[0]
+    setTestScript(testDetail.text)
+    setTestDifficulty(testDetail.difficulty)
+    fetchTTSAudioData(testDetail.text)
   }
 
   const fetchTTSAudioData = async (text) => {
@@ -61,11 +50,10 @@ const TestDetail = () => {
     fetchTestDetail(id)
   }, [selectedLanguage])
 
-
   return (
     <>
       <div className="flex justify-between mb-4 items-center">
-        <ScenarioTag text={`${parseLanguageName(language)} / ${id}번 / ${parseDifficultyName(testDifficulty)}`} className = "mr-3"/>
+        <ScenarioTag text={`${parseLanguageName(language)} / ${id}번 / ${parseDifficultyName(testDifficulty)}`} className="mr-3" />
       </div>
       <BaseCard className="test-detail-container p-4 h-full flex flex-col justify-start">
         <Scenario text={testScript} difficulty={testDifficulty} language={language} id={id} />

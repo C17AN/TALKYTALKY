@@ -10,6 +10,7 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 import { difficultyState, languageState, studyModeState } from 'store/store'
+import { AnimatePresence } from 'framer-motion'
 import styles from "./CenterLayout.module.css"
 
 const CenterLayout = () => {
@@ -19,7 +20,7 @@ const CenterLayout = () => {
 
   return (
     <div className={styles['layout-center']}>
-      <>
+      <AnimatePresence>
         {/* 메인 페이지 */}
         <Route path="/" exact>
             <Hero />
@@ -41,7 +42,7 @@ const CenterLayout = () => {
             <TestDetail />
           </>
         </Route>
-      </>
+      </AnimatePresence>
     </div>
   )
 }

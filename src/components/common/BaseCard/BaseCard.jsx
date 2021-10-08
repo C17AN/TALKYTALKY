@@ -1,9 +1,15 @@
 import React from "react";
+import { pageVariants } from "styles/framerAnimation";
+import {motion} from "framer-motion"
 import styles from "./BaseCard.module.css";
 
 const BaseCard = ({ className: cn, children }) => {
   return (
-    <div
+    <motion.div
+    initial="initial"
+    animate="in"
+    exit="out"
+    variants={pageVariants}
       className={[
         cn,
         styles.card,
@@ -11,7 +17,7 @@ const BaseCard = ({ className: cn, children }) => {
       ].join(" ")}
     >
       {children}
-    </div>
+    </motion.div>
   );
 };
 
