@@ -1,5 +1,4 @@
 import { requestTTSApi } from 'apis/TTS/postTTS'
-import BaseButton from 'components/common/BaseButton/BaseButton'
 import BaseCard from 'components/common/BaseCard/BaseCard'
 import BaseSubtitle from 'components/common/BaseSubtitle/BaseSubtitle'
 import Scenario from 'components/Scenario/Scenario'
@@ -16,9 +15,10 @@ import { languageState } from 'store/store'
 import { parseLanguageName } from 'utils/parseLanguageName'
 import { parseDifficultyName } from 'utils/parseDifficultyName'
 import { parseCategoryName } from 'utils/parseCategoryName'
+import PageMoveButton from './PageMoveButton'
 
 const TestDetail = () => {
-  let { language, id } = useParams()
+  let { studyMode, language, id } = useParams()
   const [testDetailData, setTestDetailData] = useState(null)
   const [testScript, setTestScript] = useState(null)
   const [testDifficulty, setTestDifficulty] = useState(null)
@@ -26,6 +26,16 @@ const TestDetail = () => {
   const [TTSaudio, setTTSAudio] = useState(null)
   const [TTSConfig, setTTSConfig] = useState(setAudioConfig(language))
   const [isWaiting, setIsWaiting] = useState(true)
+  const problemCount = +localStorage.getItem("problemCount")
+
+  useLayoutEffect(() => {
+    // 새로고침 했을 시, 스토어가 날아가는걸 방지하기 위한 코드
+    setSelectedLanguage(language)
+  }, [])
+
+  useEffect(() => {
+    fetchTestDetail(id)
+  }, [selectedLanguage, id])
 
   const fetchTestDetail = async (_id) => {
     const { default: testData } = selectedLanguage === LANGUAGE.KOREAN ? await import("data/koreanTest.json") : await import("data/englishTest.json")
@@ -40,15 +50,6 @@ const TestDetail = () => {
     const { audioContent } = res.data
     setTTSAudio(audioContent)
   }
-
-  useLayoutEffect(() => {
-    // 새로고침 했을 시, 스토어가 날아가는걸 방지하기 위한 코드
-    setSelectedLanguage(language)
-  }, [])
-
-  useEffect(() => {
-    fetchTestDetail(id)
-  }, [selectedLanguage])
 
   return (
     <>
@@ -69,8 +70,14 @@ const TestDetail = () => {
           isWaiting={isWaiting}
         />
         <section className="flex justify-between w-full">
-          <BaseButton text="이전 문제" />
-          <BaseButton text="다음 문제" />
+          {1 < id ?
+            <PageMoveButton text="이전 문제" problemId={+id - 1} studyMode={studyMode} language={language} className="page-move--button" /> :
+            <div></div>
+          }
+          {problemCount > id ?
+            <PageMoveButton text="다음 문제" problemId={+id + 1} studyMode={studyMode} language={language} /> :
+            <div></div>
+          }
         </section>
       </BaseCard >
     </>
