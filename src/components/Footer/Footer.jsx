@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Footer = () => {
   return (
     <footer className="absolute flex items-center justify-between bottom-0 w-screen h-16 bg-blue-100 px-8">
@@ -12,8 +10,8 @@ const Footer = () => {
         target="_blank"
         rel="noreferrer"
         className="text-blue-400 hover:underline">
-          GOOGLE 음성 합성 API를 활용합니다.
-        </a></div>
+          GOOGLE 음성 합성 API</a>를 활용합니다.
+      </div>
     </footer >
   )
 }
