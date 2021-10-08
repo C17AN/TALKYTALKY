@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "text": "My father is going to bed.",
+    "text": "Life is like riding a bicycle. To keep your balance, you must keep moving.",
     "difficulty": "EASY",
     "language": "ENGLISH",
-    "category": "DAILY"
+    "category": "ART"
   },
   {
     "id": 2,
@@ -22,21 +22,21 @@
   },
   {
     "id": 4,
-    "text": "I'm looking for someone to tell.",
+    "text": "A rose by any other name would smell as sweet.",
     "difficulty": "EASY",
     "language": "ENGLISH",
     "category": "DAILY"
   },
   {
     "id": 5,
-    "text": "A Brave new world.",
+    "text": "All that glitters is not gold.",
     "difficulty": "EASY",
     "language": "ENGLISH",
     "category": "ART"
   },
   {
     "id": 6,
-    "text": "The subject may seem like old news.",
+    "text": "All the world’s a stage, and all the men and women merely players.",
     "difficulty": "NORMAL",
     "language": "ENGLISH",
     "category": "DAILY"
@@ -50,14 +50,14 @@
   },
   {
     "id": 8,
-    "text": "To avoid unforeseen circumstances we recommend travel insurance.",
+    "text": "Ask, and it shall be given you; seek, and you shall find.",
     "difficulty": "NORMAL",
     "language": "ENGLISH",
     "category": "ART"
   },
   {
     "id": 9,
-    "text": "That is absolutely right – art never dies .",
+    "text": "Genius is one percent inspiration and ninety-nine percent perspiration.",
     "difficulty": "NORMAL",
     "language": "ENGLISH",
     "category": "ART"
@@ -68,5 +68,40 @@
     "difficulty": "HARD",
     "language": "ENGLISH",
     "category": "TRAVEL"
+  },
+  {
+    "id": 11,
+    "text": "He travels the fastest who travels alone.",
+    "difficulty": "EASY",
+    "language": "ENGLISH",
+    "category": "ART"
+  },
+  {
+    "id": 12,
+    "text": "I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin but by the content of their character.",
+    "difficulty": "HARD",
+    "language": "ENGLISH",
+    "category": "ART"
+  },
+  {
+    "id": 13,
+    "text": "I think therefore I am.",
+    "difficulty": "EASY",
+    "language": "ENGLISH",
+    "category": "ART"
+  },
+  {
+    "id": 14,
+    "text": "Not all those who wander are lost.",
+    "difficulty": "NORMAL",
+    "language": "ENGLISH",
+    "category": "ART"
+  },
+  {
+    "id": 15,
+    "text": "United we stand, divided we fall.",
+    "difficulty": "EASY",
+    "language": "ENGLISH",
+    "category": "DAILY"
   }
 ]
