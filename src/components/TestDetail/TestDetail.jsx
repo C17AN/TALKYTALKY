@@ -61,6 +61,7 @@ const TestDetail = () => {
         <div className="flex flex-col justify-evenly w-full">
           {TTSaudio && <VoicePlayer audioFile={TTSaudio} />}
           <VoiceRecorder
+            id = {id}
             text={testScript}
             language={language}
             setIsWaiting={setIsWaiting}

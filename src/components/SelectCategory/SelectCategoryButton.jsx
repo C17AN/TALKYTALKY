@@ -6,6 +6,7 @@ import styles from "./SelectDifficulty.module.css";
 
 const SelectCategoryButton = ({ text, selectedCategory, onClick }) => {
   const [category,] = useRecoilState(categoryState)
+
   return (
     <motion.button
       onClick={onClick}

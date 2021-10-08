@@ -10,10 +10,9 @@ import { setScoreTextHelper } from 'utils/setScoreTextHelper'
 // 이 코드는 블로그에 정리하기!!
 // 아주 유용할듯!
 
-const VoiceRecorder = ({ text: script, language, setIsWaiting }) => {
+const VoiceRecorder = ({ id, text: script, language, setIsWaiting }) => {
   const [isRecording, setIsRecording] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [recordedAudio, setRecordedAudio] = useState(null)
 
   const [testResult, setTestResult] = useRecoilState(testResultState)
 
@@ -31,6 +30,7 @@ const VoiceRecorder = ({ text: script, language, setIsWaiting }) => {
     const { state: recordingState } = mediaRecorder
     if (recordingState !== "recording") {
       setIsRecording(true)
+      setTestResult(null)
       mediaRecorder.start()
     }
     else if (recordingState === "recording") {
@@ -43,7 +43,7 @@ const VoiceRecorder = ({ text: script, language, setIsWaiting }) => {
     if (script && language) {
       navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(handleSuccess);
     }
-  }, [script, language])
+  }, [script, language, id])
 
   const handleSuccess = function (stream) {
     const options = {
@@ -108,7 +108,7 @@ const VoiceRecorder = ({ text: script, language, setIsWaiting }) => {
           {isRecording ?
             <StopIcon className="h-8 w-8" /> :
             <PlayIcon className="h-8 w-8 transition-colors" />}
-          <p className="font-semibold ml-2">녹음 시작</p>
+          <p className="font-semibold ml-2">{isRecording ? "녹음 중지" : "녹음 시작"}</p>
         </section>
         <div className="flex flex-col recorder-player">
           <section
