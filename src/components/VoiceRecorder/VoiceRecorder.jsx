@@ -10,7 +10,7 @@ import { setScoreTextHelper } from 'utils/setScoreTextHelper'
 // 이 코드는 블로그에 정리하기!!
 // 아주 유용할듯!
 
-const VoiceRecorder = ({ id, text: script, language, setIsWaiting }) => {
+const VoiceRecorder = ({ id, text: script, setTestScript, language, setIsWaiting }) => {
   const [isRecording, setIsRecording] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [testResult, setTestResult] = useRecoilState(testResultState)
@@ -56,22 +56,23 @@ const VoiceRecorder = ({ id, text: script, language, setIsWaiting }) => {
   useEffect(() => {
     playerRef.current.src = null
     navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(handleSuccess);
-  }, [id])
+  }, [script])
 
   const handleSuccess = function (stream) {
+    mediaRecorder = null
     const options = {
       mimeType: 'audio/webm;',
       audioBitsPerSecond: 16000,
       bitsPerSecond: 16000
     };
-    const recordedBlob = [];
+    let recordedBlob = [];
     mediaRecorder = new MediaRecorder(stream, options);
 
     mediaRecorder.addEventListener('dataavailable', function (e) {
       if (e.data.size > 0) recordedBlob.push(e.data);
     });
 
-    mediaRecorder.addEventListener('stop', () => {
+    mediaRecorder.addEventListener('stop', function stopRecord() {
       const audioContext = new AudioContext({
         sampleRate: 16000,
       });
@@ -79,11 +80,12 @@ const VoiceRecorder = ({ id, text: script, language, setIsWaiting }) => {
       const audioBlob = recordedBlob[0]
 
       // TODO: 여기부터 주석 풀면됨
-      const blobReader = new FileReader()
+      let blobReader = new FileReader()
       blobReader.readAsArrayBuffer(audioBlob)
 
       blobReader.onloadend = async () => {
         let arrayBuffer = blobReader.result;
+        console.log(script)
         // FROM : 44KHZ ArrayBuffer => TO : 16KHZ AudioBuffer
         audioContext.decodeAudioData(arrayBuffer, async (resampledBuffer) => {
           // FROM : Resampled AudioBuffer => TO : Wav ArrayBuffer
@@ -94,8 +96,11 @@ const VoiceRecorder = ({ id, text: script, language, setIsWaiting }) => {
           const { resultCode } = setScoreTextHelper(Number(score * 20).toFixed(2))
           setIsWaiting(false)
           setTestResult({ ...testResult, resultCode, score: Number(score * 20).toFixed(2) })
+          blobReader = null
+          recordedBlob = []
         })
       }
+      mediaRecorder.removeEventListener('stop', stopRecord)
     });
 
     recorderRef.current.addEventListener('click', () => {
@@ -126,10 +131,12 @@ const VoiceRecorder = ({ id, text: script, language, setIsWaiting }) => {
         <div className="flex flex-col recorder-player">
           <section
             className="flex items-center text-sm text-gray-400 px-4 py-1 hover:text-blue-200 rounded-md border border-gray-200 cursor-pointer"
-            onClick={() => togglePlayingStatus(playerRef)} >
-            {isPlaying ?
-              <StopIcon className="h-8 w-8" /> :
-              <PlayIcon className="h-8 w-8 transition-colors" />}
+            onClick={() => togglePlayingStatus(playerRef)}>
+            {
+              isPlaying ?
+                <StopIcon className="h-8 w-8" /> :
+                <PlayIcon className="h-8 w-8 transition-colors" />
+            }
             <p className="font-semibold ml-2">결과 재생</p>
           </section>
         </div>

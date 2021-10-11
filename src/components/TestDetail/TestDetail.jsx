@@ -17,7 +17,6 @@ import PageMoveButton from './PageMoveButton'
 
 const TestDetail = () => {
   let { studyMode, language, id } = useParams()
-  const [testDetailData, setTestDetailData] = useState(null)
   const [testScript, setTestScript] = useState(null)
   const [testDifficulty, setTestDifficulty] = useState(null)
   const [selectedLanguage, setSelectedLanguage] = useRecoilState(languageState)
@@ -32,13 +31,16 @@ const TestDetail = () => {
   }, [])
 
   useEffect(() => {
+    setTTSAudio(null)
     fetchTestDetail(id)
     setIsWaiting(true)
-  }, [selectedLanguage, id])
+  }, [testScript, id])
 
 
   const fetchTestDetail = async (_id) => {
-    const { default: testData } = selectedLanguage === LANGUAGE.KOREAN ? await import("data/koreanTest.json") : await import("data/englishTest.json")
+    const { default: testData } = language === LANGUAGE.KOREAN ?
+      await import("data/koreanTest.json") :
+      await import("data/englishTest.json")
     const testDetail = testData.filter(({ id }) => id === +_id)[0]
     setTestScript(testDetail.text)
     setTestDifficulty(testDetail.difficulty)
@@ -60,9 +62,10 @@ const TestDetail = () => {
         <Scenario text={testScript} difficulty={testDifficulty} language={language} id={id} />
         <div className="flex flex-col justify-evenly w-full">
           {TTSaudio && <VoicePlayer audioFile={TTSaudio} />}
-          {language && <VoiceRecorder
+          {testScript && <VoiceRecorder
             id={id}
             text={testScript}
+            setTestScript={setTestScript}
             language={language}
             setIsWaiting={setIsWaiting}
           />}
