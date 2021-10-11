@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "text": "Life is like riding a bicycle. To keep your balance, you must keep moving.",
+    "text": "Life is like riding a bicycle.",
     "difficulty": "EASY",
     "language": "ENGLISH",
     "category": "ART"
@@ -78,7 +78,7 @@
   },
   {
     "id": 12,
-    "text": "I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin but by the content of their character.",
+    "text": "I have a dream that my four little children will one day live in a nation.",
     "difficulty": "HARD",
     "language": "ENGLISH",
     "category": "ART"

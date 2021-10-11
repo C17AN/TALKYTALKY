@@ -13,15 +13,23 @@ import { setScoreTextHelper } from 'utils/setScoreTextHelper'
 const VoiceRecorder = ({ id, text: script, language, setIsWaiting }) => {
   const [isRecording, setIsRecording] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
-
   const [testResult, setTestResult] = useRecoilState(testResultState)
 
   const playerRef = useRef(null)
   const recorderRef = useRef(null)
 
-  const onPlay = () => {
-    setIsPlaying(true)
-    playerRef.current.play()
+  const togglePlayingStatus = () => {
+    if (isPlaying) {
+      setIsPlaying(false)
+      playerRef.current.pause()
+    }
+    else {
+      setIsPlaying(true)
+      playerRef.current.play()
+      setTimeout(() => {
+        setIsPlaying(false)
+      }, playerRef.current.duration * 1000)
+    }
   }
 
   let mediaRecorder = null
@@ -30,6 +38,7 @@ const VoiceRecorder = ({ id, text: script, language, setIsWaiting }) => {
     const { state: recordingState } = mediaRecorder
     if (recordingState !== "recording") {
       setIsRecording(true)
+      playerRef.current.src = null
       setTestResult({
         score: 0,
         accScore: 0,
@@ -45,10 +54,9 @@ const VoiceRecorder = ({ id, text: script, language, setIsWaiting }) => {
   }
 
   useEffect(() => {
-    if (script && language) {
-      navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(handleSuccess);
-    }
-  }, [script, language, id])
+    playerRef.current.src = null
+    navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(handleSuccess);
+  }, [id])
 
   const handleSuccess = function (stream) {
     const options = {
@@ -118,7 +126,7 @@ const VoiceRecorder = ({ id, text: script, language, setIsWaiting }) => {
         <div className="flex flex-col recorder-player">
           <section
             className="flex items-center text-sm text-gray-400 px-4 py-1 hover:text-blue-200 rounded-md border border-gray-200 cursor-pointer"
-            onClick={() => onPlay(playerRef)} >
+            onClick={() => togglePlayingStatus(playerRef)} >
             {isPlaying ?
               <StopIcon className="h-8 w-8" /> :
               <PlayIcon className="h-8 w-8 transition-colors" />}

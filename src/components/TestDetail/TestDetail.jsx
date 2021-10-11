@@ -1,6 +1,5 @@
 import { requestTTSApi } from 'apis/TTS/postTTS'
 import BaseCard from 'components/common/BaseCard/BaseCard'
-import BaseSubtitle from 'components/common/BaseSubtitle/BaseSubtitle'
 import Scenario from 'components/Scenario/Scenario'
 import ScenarioTag from 'components/Scenario/ScenarioTag'
 import TestResult from 'components/TestResult/TestResult'
@@ -14,7 +13,6 @@ import { useRecoilState } from 'recoil'
 import { languageState } from 'store/store'
 import { parseLanguageName } from 'utils/parseLanguageName'
 import { parseDifficultyName } from 'utils/parseDifficultyName'
-import { parseCategoryName } from 'utils/parseCategoryName'
 import PageMoveButton from './PageMoveButton'
 
 const TestDetail = () => {
@@ -35,7 +33,9 @@ const TestDetail = () => {
 
   useEffect(() => {
     fetchTestDetail(id)
+    setIsWaiting(true)
   }, [selectedLanguage, id])
+
 
   const fetchTestDetail = async (_id) => {
     const { default: testData } = selectedLanguage === LANGUAGE.KOREAN ? await import("data/koreanTest.json") : await import("data/englishTest.json")
@@ -60,12 +60,13 @@ const TestDetail = () => {
         <Scenario text={testScript} difficulty={testDifficulty} language={language} id={id} />
         <div className="flex flex-col justify-evenly w-full">
           {TTSaudio && <VoicePlayer audioFile={TTSaudio} />}
-          <VoiceRecorder
-            id = {id}
+          {language && <VoiceRecorder
+            id={id}
             text={testScript}
             language={language}
             setIsWaiting={setIsWaiting}
-          />
+          />}
+
         </div>
         <TestResult
           isWaiting={isWaiting}
