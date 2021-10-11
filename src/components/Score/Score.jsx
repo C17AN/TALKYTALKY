@@ -10,7 +10,7 @@ const Score = ({ score }) => {
     const { text, resultCode } = setScoreTextHelper(score)
     setScoreText(text)
     setScoreClassName(resultCode)
-  }, [])
+  }, [score])
 
   return (
     <div className="flex flex-col justify-center">

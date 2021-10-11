@@ -30,7 +30,12 @@ const VoiceRecorder = ({ id, text: script, language, setIsWaiting }) => {
     const { state: recordingState } = mediaRecorder
     if (recordingState !== "recording") {
       setIsRecording(true)
-      setTestResult(null)
+      setTestResult({
+        score: 0,
+        accScore: 0,
+        scoreList: [],
+        resultCode: null
+      })
       mediaRecorder.start()
     }
     else if (recordingState === "recording") {
@@ -78,9 +83,9 @@ const VoiceRecorder = ({ id, text: script, language, setIsWaiting }) => {
           const recordedBufferTobase64 = Buffer.from(wavBuffer).toString('base64')
           playerRef.current.src = window.URL.createObjectURL(new Blob([wavBuffer], { type: 'audio/webm;' }));
           const { data: { return_object: { score } } } = await requestSpeechAPI({ audio: recordedBufferTobase64, script, language: language })
-          const { resultCode } = setScoreTextHelper(Number(score * 20).toFixed(2)) 
-          setTestResult({ ...testResult, resultCode, score: Number(score * 20).toFixed(2) })
+          const { resultCode } = setScoreTextHelper(Number(score * 20).toFixed(2))
           setIsWaiting(false)
+          setTestResult({ ...testResult, resultCode, score: Number(score * 20).toFixed(2) })
         })
       }
     });

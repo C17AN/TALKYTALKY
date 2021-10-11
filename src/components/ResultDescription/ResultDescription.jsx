@@ -12,7 +12,7 @@ const ResultDescription = () => {
     import("data/resultText.json").then(({ resultText }) => {
       setResultDescription(resultText[testResult.resultCode])
     })
-  }, [])
+  }, [testResult])
 
   return (
     <div className="result-description-summary ml-4 mr-6 text-sm">
