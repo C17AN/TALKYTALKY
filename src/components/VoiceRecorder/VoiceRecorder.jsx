@@ -92,7 +92,7 @@ const VoiceRecorder = ({ id, text: script, setTestScript, language, setIsWaiting
           const wavBuffer = toWav(resampledBuffer)
           const recordedBufferTobase64 = Buffer.from(wavBuffer).toString('base64')
           playerRef.current.src = window.URL.createObjectURL(new Blob([wavBuffer], { type: 'audio/webm;' }));
-          const { data: { return_object: { score } } } = await requestSpeechAPI({ audio: recordedBufferTobase64, script, language: language })
+          const { return_object: { score } } = await requestSpeechAPI({ audio: recordedBufferTobase64, script, language: language })
           const { resultCode } = setScoreTextHelper(Number(score * 20).toFixed(2))
           setIsWaiting(false)
           setTestResult({ ...testResult, resultCode, score: Number(score * 20).toFixed(2) })
