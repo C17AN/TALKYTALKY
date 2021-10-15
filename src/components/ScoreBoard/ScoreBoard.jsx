@@ -7,11 +7,11 @@ import styles from "./ScoreBoard.module.css"
 const ScoreBoard = () => {
   return (
     <>
-      <BaseSubtitle text="실시간 채점 기록" />
+      <BaseSubtitle text="실시간 채점 기록 (DEMO)" />
       <BaseCard className={[styles['scoreboard-container'], "justify-start"].join(" ")}>
-        <ScoreRecord />
-        <ScoreRecord />
-        <ScoreRecord />
+        <ScoreRecord id = "1" score = "82.4"/>
+        <ScoreRecord id = "2" score = "66.8"/>
+        <ScoreRecord id = "3" score = "72.1"/>
       </BaseCard>
     </>
   )
