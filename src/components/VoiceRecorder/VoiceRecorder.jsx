@@ -6,13 +6,16 @@ import { requestSpeechAPI } from 'apis/Speech/postSpeech'
 import { useRecoilState } from 'recoil'
 import { testResultState } from 'store/store'
 import { setScoreTextHelper } from 'utils/setScoreTextHelper'
+import { useHistory } from 'react-router'
 
 // 이 코드는 블로그에 정리하기!!
 // 아주 유용할듯!
 
 const VoiceRecorder = ({ id, text: script, setTestScript, language, setIsWaiting }) => {
+  const history = useHistory()
   const [isRecording, setIsRecording] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [isEnded, setIsEnded] = useState(false)
   const [testResult, setTestResult] = useRecoilState(testResultState)
 
   const playerRef = useRef(null)
@@ -50,11 +53,13 @@ const VoiceRecorder = ({ id, text: script, setTestScript, language, setIsWaiting
     else if (recordingState === "recording") {
       setIsRecording(false)
       mediaRecorder.stop()
+      setIsEnded(true)
     }
   }
 
   useEffect(() => {
     playerRef.current.src = null
+    setIsEnded(false)
     navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(handleSuccess);
   }, [script])
 
@@ -72,7 +77,7 @@ const VoiceRecorder = ({ id, text: script, setTestScript, language, setIsWaiting
       if (e.data.size > 0) recordedBlob.push(e.data);
     });
 
-    mediaRecorder.addEventListener('stop', function stopRecord() {
+    mediaRecorder.addEventListener('stop', function onRecordStop() {
       const audioContext = new AudioContext({
         sampleRate: 16000,
       });
@@ -85,7 +90,6 @@ const VoiceRecorder = ({ id, text: script, setTestScript, language, setIsWaiting
 
       blobReader.onloadend = async () => {
         let arrayBuffer = blobReader.result;
-        console.log(script)
         // FROM : 44KHZ ArrayBuffer => TO : 16KHZ AudioBuffer
         audioContext.decodeAudioData(arrayBuffer, async (resampledBuffer) => {
           // FROM : Resampled AudioBuffer => TO : Wav ArrayBuffer
@@ -100,7 +104,7 @@ const VoiceRecorder = ({ id, text: script, setTestScript, language, setIsWaiting
           recordedBlob = []
         })
       }
-      mediaRecorder.removeEventListener('stop', stopRecord)
+      mediaRecorder.removeEventListener('stop', onRecordStop)
     });
 
     recorderRef.current.addEventListener('click', () => {
@@ -126,7 +130,9 @@ const VoiceRecorder = ({ id, text: script, setTestScript, language, setIsWaiting
           {isRecording ?
             <StopIcon className="h-8 w-8" /> :
             <PlayIcon className="h-8 w-8 transition-colors" />}
-          <p className="font-semibold ml-2">{isRecording ? "녹음 중지" : "녹음 시작"}</p>
+          {isEnded ? <p className="font-semibold ml-2" onClickCapture= {() => window.location.reload()}>다시 평가하기</p> :
+            <p className="font-semibold ml-2">{isRecording ? "녹음 중지" : "녹음 시작"}</p>
+          }
         </section>
         <div className="flex flex-col recorder-player">
           <section
